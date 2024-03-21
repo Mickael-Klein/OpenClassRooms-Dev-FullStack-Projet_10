@@ -1,0 +1,17 @@
+name: 'Backend Test Report'
+on:
+  workflow_run:
+    workflows: ['Java CI with Maven']               # runs after CI workflow
+    types:
+      - completed
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: phoenix-actions/test-reporting@v12
+      id: test-report                     # Set ID reference for step
+      with:
+        artifact: test-results            # artifact name
+        name: JUNIT Tests                  # Name of the check run which will be created
+        path: '*.xml'                     # Path to test results (inside artifact .zip)
+        reporter: jest-junit              # Format of test results
