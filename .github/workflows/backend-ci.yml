@@ -23,5 +23,7 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
         working-directory: ${{ github.workspace }}/back
-      - name: Test Report
+      - name: print directory
         run: ls ${{ github.workspace }}/back
+      - name: search jacoco report
+        run: ls ${{ github.workspace }}/back/target/site/jacoco
