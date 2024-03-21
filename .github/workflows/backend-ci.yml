@@ -27,4 +27,4 @@ jobs:
         if: success() || failure()        # run this step even if previous step failed
         with:
           name: backend-test-result
-          path: ${{ github.workspace }}/back/target/site/jacoco/index.html
+          path: ${{ github.workspace }}/back/target/site/jacoco/jacoco.xml
