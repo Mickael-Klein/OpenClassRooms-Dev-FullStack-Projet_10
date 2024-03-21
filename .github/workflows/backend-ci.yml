@@ -20,10 +20,9 @@ jobs:
           cache: maven
       - name: list folders
         run: ls ${{ github.workspace }}
-      - name: Navigate to backend folder
-        run: cd ${{ github.workspace }}/back
       - name: Build with Maven
         run: mvn clean install
+        working-directory: ${{ github.workspace }}/back
       - name: Work is over
         run: echo "done"
 
