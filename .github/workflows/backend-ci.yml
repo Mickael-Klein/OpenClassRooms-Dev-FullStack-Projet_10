@@ -1,6 +1,7 @@
 name: Java CI with Maven
+ this is a test !
  
-on:
+o n:
   push:
     branches: ["main"]
   pull_request:
