@@ -27,3 +27,9 @@ jobs:
         run: ls ${{ github.workspace }}/back
       - name: search jacoco report
         run: ls ${{ github.workspace }}/back/target/site/jacoco
+      - name: Get test report
+        uses: actions/upload-artifact@v2  # upload test results
+        if: success() || failure()        # run this step even if previous step failed
+        with:
+          name: jacoco-result
+          path: ${{ github.workspace }}/back/target/site/jacoco/jacoco.xml
