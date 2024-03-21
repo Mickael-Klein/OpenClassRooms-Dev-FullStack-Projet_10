@@ -18,10 +18,10 @@ jobs:
           java-version: "11"
           distribution: "temurin"
           cache: maven
+      - name: list folders
+        run: ls ${{ github.workspace }}
       - name: Navigate to backend folder
-        run: |
-          ls ${{ github.workspace }}
-          cd ${{ github.workspace }}/back
+        run: cd ${{ github.workspace }}/back
       - name: Build with Maven
         run: mvn clean install
       - name: Work is over
