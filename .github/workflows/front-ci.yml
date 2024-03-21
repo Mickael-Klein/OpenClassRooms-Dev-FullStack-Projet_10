@@ -32,8 +32,8 @@ jobs:
       working-directory: ${{ github.workspace }}/front
     - name: Print front directory
       run: ls ${{github.workspace}}/front
-    - uses: actions/upload-artifact@v2  # upload test results
+    - uses: actions/upload-artifact@v4  # upload test results
       if: success() || failure()        # run this step even if previous step failed
       with:
-        name: backend-test-result
+        name: frontend-test-result
         path: ${{ github.workspace }}/front/coverage/bobapp/index.html
