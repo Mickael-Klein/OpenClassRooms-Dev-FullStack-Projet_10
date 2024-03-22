@@ -8,7 +8,7 @@ on:
       - main
 jobs:
   sonarcloudScan1:
-    name: SonarCloudScan1
+    name: SonarCloudScan1 backend
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -38,7 +38,7 @@ jobs:
         working-directory: ${{github.workspace}}/back
           
   sonarcloudScan2:
-    name: SonarCloudScan2
+    name: SonarCloudScan2 frontend
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
