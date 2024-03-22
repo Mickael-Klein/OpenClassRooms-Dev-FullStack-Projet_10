@@ -46,7 +46,9 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Print directories
-        run: ls ${{github.workspace}}
+        run: ls ${{github.workspace}}/front/
+      - name: Print directories front
+        run: ls ${{github.workspace}}/front/coverage/bobapp
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
