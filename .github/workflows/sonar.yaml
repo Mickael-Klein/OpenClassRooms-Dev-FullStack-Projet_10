@@ -47,6 +47,16 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Print directories
         run: ls ${{github.workspace}}/front/
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      - name: Build and test project
+        run: |
+          npm ci
+          npm run build --if-present
+          npm run test:prod
+        working-directory: ${{ github.workspace }}/front
       - name: Print directories front
         run: ls ${{github.workspace}}/front/coverage/bobapp
       - name: SonarCloud Scan
