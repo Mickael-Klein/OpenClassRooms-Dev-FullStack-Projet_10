@@ -33,7 +33,6 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mickael-klein_OpenClassRooms-Dev-FullStack-Projet_10:backend
         working-directory: ${{github.workspace}}/back
@@ -45,8 +44,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Print directories
-        run: ls ${{github.workspace}}/front/
       - name: Use Node.js 20.x
         uses: actions/setup-node@v3
         with:
@@ -57,12 +54,9 @@ jobs:
           npm run build --if-present
           npm run test:prod
         working-directory: ${{ github.workspace }}/front
-      - name: Print directories front
-        run: ls ${{github.workspace}}/front/coverage/bobapp
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
           projectBaseDir: front
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
