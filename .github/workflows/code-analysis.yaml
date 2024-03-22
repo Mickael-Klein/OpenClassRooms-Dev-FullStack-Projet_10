@@ -1,4 +1,4 @@
-name: Sonar Monorepo Test
+name: Code Quality Analysis
 on:
   push:
       branches:
