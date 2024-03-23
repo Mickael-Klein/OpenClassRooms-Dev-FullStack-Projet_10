@@ -73,5 +73,5 @@ jobs:
       - name: Print directory front
         run: ls ${{github.workspace}}/front
 
-      - name: Print front target
-        run: ls ${{github.workspace}}/front/target
+      - name: Print front dist
+        run: ls ${{github.workspace}}/front/dist
