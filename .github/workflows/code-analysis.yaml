@@ -69,3 +69,9 @@ jobs:
           projectBaseDir: front
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
+
+      - name: Print directory front
+        run: ls ${{github.workspace}}/front
+
+      - name: Print front target
+        run: ls ${{github.workspace}}/front/target
