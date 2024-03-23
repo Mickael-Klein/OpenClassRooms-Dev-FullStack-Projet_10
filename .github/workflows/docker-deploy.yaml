@@ -27,7 +27,7 @@ jobs:
         with:
           context: "{{defaultContext}}:front"
           push: true
-          tags: user/app:latest
+          tags: sv3ngali75/ocr_dev_fullstack_p10:latest
 
 
   docker-backend:
@@ -51,4 +51,4 @@ jobs:
         with:
           context: "{{defaultContext}}:back"
           push: true
-          tags: user/app:latest
+          tags: sv3ngali75/ocr_dev_fullstack_p10:latest
