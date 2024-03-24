@@ -5,21 +5,20 @@ import { JokesService } from './services/jokes.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `
+    <div>
+      <p>{{ joke }}</p>
+    </div>
+  `,
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  public joke$: Observable<Joke | null> = this.jokesService.joke$();
+  joke: string;
 
-  constructor(private jokesService: JokesService) {
-  }
-
-  public ngOnInit(): void {
-    this.getRandomJoke();
-  }
-
-  public getRandomJoke(): void {
-    this.jokesService.getRandomJoke();
+  constructor() {
+    // Exemple de faille XSS
+    this.joke = '<script>alert("Vous avez été piraté !")</script>';
   }
 }
+
