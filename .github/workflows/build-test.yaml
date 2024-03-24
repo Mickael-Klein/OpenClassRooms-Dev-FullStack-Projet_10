@@ -7,9 +7,11 @@ on:
   pull_request:
       branches:
       - main
+      types: [submitted]
 
 jobs:
   backend:
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
 
     steps:
@@ -35,6 +37,7 @@ jobs:
           path: ${{ github.workspace }}/back/target/site/jacoco/jacoco.xml
 
   frontend:
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
 
     steps:
