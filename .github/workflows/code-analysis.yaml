@@ -38,6 +38,7 @@ jobs:
           
       - name: Build and analyze
         env:
+          GITHUB_TOKEN: ${{ secrets.GITH_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mickael-klein_OpenClassRooms-Dev-FullStack-Projet_10:backend
         working-directory: ${{github.workspace}}/back
@@ -68,4 +69,5 @@ jobs:
         with:
           projectBaseDir: front
         env:
+          GITHUB_TOKEN: ${{ secrets.GITH_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
